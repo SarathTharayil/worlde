@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en" class="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Wordle - saraththarayil.com</title>
+    <style>
+      html.dark {
+        --dot-bg-color: #0d1117;
+        --dot-color: #2f353c;
+        --dot-mask-color: #000000;
+      }
+
+      html:not(.dark) {
+        --dot-bg-color: #ffffff;
+        --dot-color: #a5aeb850;
+        --dot-mask-color: #ffffff;
+      }
+
+      body, html {
+        margin: 0;
+        padding: 0;
+        height: 100%;
+        width: 100%;
+      }
+
+      .bg-dot {
+        position: relative;
+        width: 100%;
+        height: 100%;
+      }
+
+      .bg-dot::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background:
+          linear-gradient(90deg, var(--dot-bg-color) 22px, transparent 1%) 50%,
+          linear-gradient(var(--dot-bg-color) 22px, transparent 1%) 50%,
+          var(--dot-color);
+        background-position: center center;
+        background-size: 24px 24px;
+        mask-image: linear-gradient(0deg, transparent 5%, var(--dot-mask-color));
+      }
+
+      #root {
+        position: relative; /* Ensure content is above the background */
+        z-index: 1;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="bg-dot">
+      <div id="root">
+        <h1>WORDLE</h1>
+      </div>
+    </div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>
